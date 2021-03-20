@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: one
+  subcategory: one
+  product: one
+  size: MyString
+  color: MyString
+  stock: 1
+
+two:
+  category: two
+  subcategory: two
+  product: two
+  size: MyString
+  color: MyString
+  stock: 1
