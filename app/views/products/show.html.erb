@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<h2>Variaciones</h2>
+
+<table>
+  <thead>
+    <th>Category</th>
+    <th>Sub-category</th>
+    <th>Size</th>
+    <th>Color</th>
+    <th>Stock</th>
+  </thead>
+  <tbody>
+    <% @product.category_products.each do |category_product| %>
+      <tr>
+        <td> <%= category_product.category.name %> </td>
+        <td> <%= category_product.size %> </td>
+        <td> <%= category_product.color %> </td>
+        <td> <%= category_product.stock %> </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
