@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2021_03_20_225941) do
 
   create_table "category_products", force: :cascade do |t|
     t.integer "category_id"
-    t.integer "sub_category_id"
     t.integer "product_id"
+    t.string "sub_category"
     t.string "size"
     t.string "color"
     t.integer "stock"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2021_03_20_225941) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_category_products_on_category_id"
     t.index ["product_id"], name: "index_category_products_on_product_id"
-    t.index ["sub_category_id"], name: "index_category_products_on_sub_category_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -59,14 +58,6 @@ ActiveRecord::Schema.define(version: 2021_03_20_225941) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "sub_categories", force: :cascade do |t|
-    t.string "name"
-    t.integer "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_sub_categories_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
