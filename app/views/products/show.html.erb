@@ -15,27 +15,15 @@
   <%= @product.price %>
 </p>
 
-<h2>Variaciones</h2>
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
 
-<table>
-  <thead>
-    <th>Category</th>
-    <th>Sub-category</th>
-    <th>Size</th>
-    <th>Color</th>
-    <th>Stock</th>
-  </thead>
-  <tbody>
-    <% @product.category_products.each do |category_product| %>
-      <tr>
-        <td> <%= category_product.category.name %> </td>
-        <td> <%= category_product.size %> </td>
-        <td> <%= category_product.color %> </td>
-        <td> <%= category_product.stock %> </td>
-      </tr>
-    <%end%>
-  </tbody>
-</table>
+<p>
+  <strong>Sku:</strong>
+  <%= @product.sku %>
+</p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

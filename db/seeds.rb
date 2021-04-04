@@ -1,28 +1,47 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+#CREANDO CATEGORIAS
 Category.destroy_all
-
-categories = ["Clothes", "Shoes", "Smartphones"]
-
+categories = ["T-shirt", "Shoes", "Pants"]
 categories.each do |category|
        Category.create(name: category)
 end
 
+#CREANDO PRODUCTOS
 Product.destroy_all
-
 Category.all.each do |category|
-       4.times do |i|
+       5.times do |i|
               product_attributes ={
                      name: "Producto # #{i}",
+                     description: "Descripcion # #{i}",
                      price: rand(1..100),
-                     description: "Descripcion # #{i}"
+                     stock: rand(100...5000),
+                     sku: "AKJBND5"
               }
               Product.create(product_attributes).categories << category
        end
+end
+
+#CREANDO METODO DE PAGO
+PaymentMethod.destroy_all
+PaymentMethod.create(name: "Paypal Express Checkout", code: "PEC")
+
+#CREANDO ADMIN
+Admin.destroy_all
+Admin.create(
+       email: "email_admin@gmail.com"
+)
+
+#CREANDO COLORES
+Color.destroy_all
+10.times do
+       Color.create(
+              name: Faker::Color.color_name,
+              code: Faker::Color.hex_color
+       )
+end
+
+#CREANDO TALLAS
+Size.destroy_all
+tallas = ["XS", "S", "M", "XL", "L", "LL"]
+tallas.each do |talla|
+       Size.create(name: talla)
 end

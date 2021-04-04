@@ -1,6 +1,16 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+      login: "sb-47vw47e5414819_api1.business.example.com",
+      password: "RDA2N69YDS6DP4NS",
+      signature: "AY1JWvhwq1x0NFTca36.XId23pXyAJNDt7JLCTLlCPzdKHK.5vbBn6ZJ"
+    }
+    ::EXPRESS_GATEWAY =   ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
